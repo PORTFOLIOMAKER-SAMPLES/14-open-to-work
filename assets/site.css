@@ -1029,6 +1029,172 @@ button { font: inherit; color: inherit; }
   color: var(--wf-muted);
   white-space: pre-line;
 }
+/* ── 디지털 명함 ───────────────────────────────────────────────
+ * 종이 명함 비율(91×55mm ≈ 1.655)을 그대로 씁니다 — 화면에서도 "명함"으로
+ * 읽히고, 스크린샷을 그대로 인쇄해도 비율이 맞습니다.
+ *
+ * 껍데기(.wf-bcard)와 안쪽(.wf-bcard__in)을 나눈 이유
+ *   글자·여백을 카드 폭에 매려면 컨테이너 단위(cqw)가 필요한데, cqw는
+ *   **조상** 컨테이너를 잽니다. 껍데기 자신의 padding에 쓰면 조상(없으면 화면)을
+ *   재서 1440px 화면에서 패딩이 100px까지 부풀었습니다. %로 바꿔도 부모 폭을
+ *   재기는 마찬가지입니다. 그래서 껍데기는 크기만 정하고, 여백과 배치는 한 겹
+ *   안에서 잡습니다 — 안쪽에게는 껍데기가 조상이라 cqw가 카드 폭을 가리킵니다.
+ */
+.wf-bcard {
+  container-type: inline-size;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 91 / 55;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid var(--wf-line);
+  border-radius: inherit;
+  background: var(--wf-surface);
+  --bc-accent: var(--wf-accent);
+}
+.wf-bcard__in {
+  position: relative;
+  display: grid;
+  height: 100%;
+  padding: 7cqw;
+  gap: 3cqw;
+}
+.wf-bcard__lead { display: flex; flex-direction: column; min-width: 0; }
+.wf-bcard__role {
+  font-size: 7cqw; font-weight: 800; line-height: 1;
+  letter-spacing: -0.02em; color: var(--bc-accent);
+  /*
+   * 전역 규칙이 `overflow-wrap: anywhere`라 'FullStack'이 'FullStac / k'로
+   * 잘렸습니다. 명함의 큰 글자는 한 낱말이 곧 그림이라 낱말 중간에서
+   * 끊기면 안 됩니다 — 이 자리에서만 되돌립니다.
+   */
+  overflow-wrap: normal;
+}
+.wf-bcard__rolesub { font-size: 4.4cqw; font-weight: 700; line-height: 1.2; }
+.wf-bcard__info { display: flex; flex-direction: column; justify-content: center; gap: 2.2cqw; min-width: 0; }
+.wf-bcard__row { display: flex; align-items: center; gap: 2.6cqw; min-width: 0; }
+.wf-bcard__text { display: flex; flex-direction: column; min-width: 0; }
+.wf-bcard__name { font-size: 4.8cqw; font-weight: 800; line-height: 1.15; }
+.wf-bcard__nameen { font-size: 2.5cqw; color: var(--wf-muted); line-height: 1.3; }
+.wf-bcard__title { font-size: 2.5cqw; color: var(--wf-muted); line-height: 1.3; }
+.wf-bcard__line { font-size: 2.5cqw; line-height: 1.35; white-space: pre-line; }
+.wf-bcard__ico {
+  flex: none; display: grid; place-items: center;
+  width: 5.4cqw; height: 5.4cqw;
+  border-radius: 50%;
+  background: var(--bc-accent);
+  color: #fff;
+}
+.wf-bcard__ico svg { width: 60%; height: 60%; display: block; }
+.wf-bcard__side { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.6cqw; }
+.wf-bcard__qr { display: block; width: 100%; }
+.wf-bcard__qr .wf-qr { display: block; width: 100%; height: auto; color: inherit; }
+.wf-bcard__save {
+  font-size: 2.3cqw; font-weight: 700;
+  color: var(--bc-accent);
+  text-decoration: none;
+  white-space: nowrap;
+}
+/* 장식 곡선 — 기본은 안 그립니다. '사이드 라인'만 켭니다. */
+.wf-bcard__deco { display: none; }
+/* 사이드 라인 — 왼쪽에 큰 분야, 오른쪽에 아이콘 줄. 참고 이미지의 배치입니다.
+ * 아이콘을 잇는 세로 점선은 아이콘 칸 뒤에 깔아 그립니다(요소를 안 늘립니다). */
+/*
+ * 두 칸입니다. 예전엔 큰 글자 / 연락처 / QR 세 칸이었는데, 폭을 나눠 보면
+ * 셋을 한 줄에 세우는 순간 연락처 칸이 카드 폭의 15%까지 눌려 이메일이
+ * 두 줄로 접혔습니다(글자를 줄여도 다 같이 줄어들어 비율은 그대로입니다).
+ * QR은 큰 글자 아래의 빈 자리로 내려보냅니다 — 세로로는 남으니까요.
+ */
+.wf-bcard--sideline .wf-bcard__in {
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: 1fr auto;
+  align-items: center;
+}
+.wf-bcard--sideline .wf-bcard__lead { grid-column: 1; grid-row: 1; align-self: end; }
+.wf-bcard--sideline .wf-bcard__info { grid-column: 2; grid-row: 1 / -1; }
+.wf-bcard--sideline .wf-bcard__side { grid-column: 1; grid-row: 2; align-self: start; align-items: flex-start; }
+.wf-bcard--sideline .wf-bcard__info::before {
+  content: '';
+  position: absolute; top: 8%; bottom: 8%; right: 3cqw;
+  width: 1px;
+  background: repeating-linear-gradient(to bottom,
+    var(--bc-accent) 0 3px, transparent 3px 7px);
+  opacity: 0.55;
+}
+.wf-bcard--sideline .wf-bcard__info { position: relative; }
+.wf-bcard--sideline .wf-bcard__row { justify-content: flex-end; text-align: right; }
+.wf-bcard--sideline .wf-bcard__text { align-items: flex-end; text-align: right; }
+.wf-bcard--sideline .wf-bcard__ico { position: relative; z-index: 1; }
+.wf-bcard--sideline .wf-bcard__side { width: 20cqw; }
+.wf-bcard--sideline .wf-bcard__deco {
+  display: block;
+  position: absolute; left: -8cqw; top: -18%; bottom: -18%; width: 34cqw;
+  border-radius: 50%;
+  border: 1.2cqw solid color-mix(in srgb, var(--bc-accent) 26%, transparent);
+  border-right-color: transparent;
+  transform: rotate(-12deg);
+  pointer-events: none;
+}
+/* 가운데 정렬 — 이름을 앞세우는 가장 조용한 판 */
+.wf-bcard--center .wf-bcard__in {
+  grid-template-rows: auto 1fr auto;
+  justify-items: center; align-content: center;
+  text-align: center;
+  gap: 2cqw;
+}
+.wf-bcard--center .wf-bcard__lead { align-items: center; }
+.wf-bcard--center .wf-bcard__role { font-size: 7cqw; }
+.wf-bcard--center .wf-bcard__rolesub { font-size: 3.4cqw; color: var(--wf-muted); }
+.wf-bcard--center .wf-bcard__info { align-items: center; }
+.wf-bcard--center .wf-bcard__text { align-items: center; text-align: center; }
+.wf-bcard--center .wf-bcard__side { flex-direction: row; }
+.wf-bcard--center .wf-bcard__qr { width: 17cqw; }
+/* 좌우 분할 — 왼쪽 색 띠에 분야, 오른쪽에 연락처 */
+.wf-bcard--split .wf-bcard__in {
+  grid-template-columns: 34% 1fr auto;
+  align-items: center;
+  padding: 0 6cqw 0 0;
+  gap: 4cqw;
+}
+.wf-bcard--split .wf-bcard__lead {
+  align-self: stretch; justify-content: center;
+  padding: 0 4cqw;
+  background: var(--bc-accent);
+  color: #fff;
+}
+.wf-bcard--split .wf-bcard__role { color: #fff; font-size: 6.6cqw; }
+.wf-bcard--split .wf-bcard__rolesub { color: rgb(255 255 255 / 0.85); font-size: 3.6cqw; }
+.wf-bcard--split .wf-bcard__side { width: 15cqw; }
+/* 다크 카드 — 어두운 바탕에 포인트 색만 남깁니다 */
+.wf-bcard--dark {
+  background: #111114;
+  border-color: rgb(255 255 255 / 0.14);
+  color: #f4f4f5;
+}
+.wf-bcard--dark .wf-bcard__in {
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: 1fr auto;
+  align-items: center;
+}
+.wf-bcard--dark .wf-bcard__lead { grid-column: 1; grid-row: 1; align-self: end; }
+.wf-bcard--dark .wf-bcard__info { grid-column: 2; grid-row: 1 / -1; }
+.wf-bcard--dark .wf-bcard__side { grid-column: 1; grid-row: 2; align-self: start; align-items: flex-start; }
+.wf-bcard--dark .wf-bcard__nameen,
+.wf-bcard--dark .wf-bcard__title { color: rgb(255 255 255 / 0.6); }
+.wf-bcard--dark .wf-bcard__row { justify-content: flex-end; text-align: right; }
+.wf-bcard--dark .wf-bcard__text { align-items: flex-end; text-align: right; }
+.wf-bcard--dark .wf-bcard__side { width: 20cqw; }
+.wf-bcard--dark .wf-bcard__qr .wf-qr { color: #f4f4f5; }
+/*
+ * 좁을 때 — 기준은 **화면 폭이 아니라 명함 폭**입니다(@container).
+ * 화면으로 재면 넓은 모니터에서 좁은 칸에 넣은 명함이 안 줄고, 반대로 폰에서
+ * 화면을 꽉 채운 명함의 QR이 이유 없이 사라집니다. 명함은 제 폭만 압니다.
+ * 안쪽 글자는 cqw라 저절로 줄어드니 QR만 자리를 양보합니다.
+ */
+@container (max-width: 300px) {
+  .wf-bcard__side { display: none; }
+  .wf-bcard--split .wf-bcard__in { grid-template-columns: 32% 1fr; }
+}
 /* 버튼에 파일이 걸렸을 때의 꼬리표 */
 .wf-btn__file { font-style: normal; font-size: 0.8em; opacity: 0.72; margin-left: 7px; }
 /* 앵커로 내려갈 때 고정 헤더에 글자가 가리지 않게 */
