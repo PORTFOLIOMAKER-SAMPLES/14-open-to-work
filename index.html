@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>서하늘 — 신입 풀스택 개발자</title>
+  <meta name="description" content="배운 것은 바로 만들어 보는 신입 풀스택. 화면부터 서버, 배포까지 — 프로젝트와 트러블슈팅 기록." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="서하늘 — 신입 풀스택 개발자" />
+  <meta property="og:description" content="배운 것은 바로 만들어 보는 신입 풀스택. 화면부터 서버, 배포까지 — 프로젝트와 트러블슈팅 기록." />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%232563eb%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2234%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22central%22%20font-family%3D%22system-ui%2Csans-serif%22%20font-size%3D%2230%22%20font-weight%3D%22700%22%20fill%3D%22%23fff%22%3ESH%3C%2Ftext%3E%3C%2Fsvg%3E" />
+  <link rel="stylesheet" href="./assets/site.css" />
+</head>
+<body>
+  <div class="wf-page" style="font-family:'Inter', -apple-system, 'Segoe UI', 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', system-ui, sans-serif;background:#f7f6f3;--wf-bg:#f7f6f3;--wf-text:#1c1917;color:#1c1917;--wf-surface:#ffffff;--wf-line:#e0ddd6;--wf-muted:#57534e;--wf-accent:#1c1917;--wf-max:1160px;padding:10px 16px;--fx-dot-color:#a8a29e;--fx-star-color:#57534e;--fx-char-color:#1c1917;--wfm-bg:#101116;--wfm-text:#eceef4;--wfm-surface:#181a22;--wfm-line:#2a2d38;--wfm-muted:#a6aab8;gap:12px">
+    <span class="wf-progress" aria-hidden="true"></span>
+    <div class="wf" style="grid-template-columns:repeat(4, minmax(0, 1fr));grid-template-rows:auto auto auto;gap:12px">
+    <header class="wf__region is-sticky has-divider" style="grid-column:1 / -1;grid-row:1;min-height:76px;border-radius:14px;border-width:1px;border-color:var(--wf-line, currentColor);padding:min(16px, 6vw)">
+      <div class="wf-bar" style="justify-content:space-between">
+        <span class="wf-bar__logo">서하늘</span>
+        <nav class="wf-nav">
+        <a href="#introduce" class="wf-nav__item">Introduce</a>
+        <a href="#frontend" class="wf-nav__item">Frontend</a>
+        <a href="#backend" class="wf-nav__item">Backend</a>
+        <a href="#infra-tools" class="wf-nav__item">Infra · Tools</a>
+        <a href="#projects" class="wf-nav__item">Projects</a>
+        <a href="#archiving" class="wf-nav__item">Archiving</a>
+      </nav>
+        <a class="wf-btn wf-btn--sm" href="#contact">이력서 받기</a>
+        <button type="button" class="wf-mode" data-mode-toggle aria-label="다크 / 라이트 전환"><svg class="wf-mode__moon" aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="wf-mode__sun" aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button>
+      </div>
+    </header>
+    <section class="wf__region wf-tfx wf-tfx--chars wf-tfx-on--title" style="grid-column:1 / -1;grid-row:2;min-height:480px;border-radius:14px;border-width:1px;border-color:var(--wf-line, currentColor);padding:min(48px, 6vw);--tfx-step:65ms;--tfx-delay:200ms">
+      <div class="wf-hero" style="align-items:center;text-align:center">
+        <img class="wf-hero__photo is-round" src="./assets/images/img14msobxzme0.jpg" alt="노트북과 책상 — 매일 만드는 자리" loading="lazy" style="object-fit:cover;width:124px;height:124px" />
+        <h1 class="wf-hero__title" style="font-size:clamp(1.9em, 8.5vw, calc(1.05 * 3.2em))"><span class="wf-tfx__w"><span class="wf-tfx__ch" style="--i:0">안</span><span class="wf-tfx__ch" style="--i:1">녕</span><span class="wf-tfx__ch" style="--i:2">하</span><span class="wf-tfx__ch" style="--i:3">세</span><span class="wf-tfx__ch" style="--i:4">요</span><span class="wf-tfx__ch" style="--i:5">,</span></span><br /><span class="wf-tfx__w"><span class="wf-tfx__ch" style="--i:6">배</span><span class="wf-tfx__ch" style="--i:7">운</span><span class="wf-tfx__ch" style="--i:8">&nbsp;</span></span><span class="wf-tfx__w"><span class="wf-tfx__ch" style="--i:9">것</span><span class="wf-tfx__ch" style="--i:10">은</span><span class="wf-tfx__ch" style="--i:11">&nbsp;</span></span><span class="wf-tfx__w"><span class="wf-tfx__ch" style="--i:12">바</span><span class="wf-tfx__ch" style="--i:13">로</span><span class="wf-tfx__ch" style="--i:14">&nbsp;</span></span><span class="wf-tfx__w"><span class="wf-tfx__ch" style="--i:15">만</span><span class="wf-tfx__ch" style="--i:16">들</span><span class="wf-tfx__ch" style="--i:17">어</span><span class="wf-tfx__ch" style="--i:18">&nbsp;</span></span><span class="wf-tfx__w"><span class="wf-tfx__ch" style="--i:19">보</span><span class="wf-tfx__ch" style="--i:20">는</span></span><br /><span class="wf-tfx__w"><span class="wf-tfx__ch" style="--i:21">신</span><span class="wf-tfx__ch" style="--i:22">입</span><span class="wf-tfx__ch" style="--i:23">&nbsp;</span></span><span class="wf-tfx__w"><span class="wf-tfx__ch" style="--i:24">풀</span><span class="wf-tfx__ch" style="--i:25">스</span><span class="wf-tfx__ch" style="--i:26">택</span><span class="wf-tfx__ch" style="--i:27">&nbsp;</span></span><span class="wf-tfx__w"><span class="wf-tfx__ch" style="--i:28">서</span><span class="wf-tfx__ch" style="--i:29">하</span><span class="wf-tfx__ch" style="--i:30">늘</span><span class="wf-tfx__ch" style="--i:31">입</span><span class="wf-tfx__ch" style="--i:32">니</span><span class="wf-tfx__ch" style="--i:33">다</span></span></h1>
+        <p class="wf-hero__sub">수업에서 배운 다음 날 프로젝트에 적용해 봅니다.<br />화면부터 서버, 배포까지 혼자 한 바퀴 돌려 본 기록을 모았습니다.</p>
+        <a class="wf-btn" style="border-radius:10px" href="#contact">이력서 받기</a>
+      </div>
+    </section>
+    <section class="wf__region" style="grid-column:1;grid-row:3;min-height:260px;border-radius:14px;border-width:1px;border-color:var(--wf-line, currentColor);padding:min(36px, 6vw)">
+      <div class="wf-sec" style="align-items:flex-start">
+        <h2 class="wf-sec__title"></h2>
+        <div class="wf-sec__cols" style="grid-template-columns:repeat(1, minmax(0, 1fr))">
+          <p class="wf-sec__body"></p>
+        </div>
+        <div class="wf-stats"><div class="wf-stat"><b class="wf-stat__num"><i class="wf-stat__count" style="--wf-n-to:12" aria-hidden="true"></i><span class="wf-stat__plain" aria-hidden="true">12</span><span class="wf-stat__suffix" aria-hidden="true">개</span><span class="wf-sr">12개</span></b><span class="wf-stat__label">혼자 만든 공개 프로젝트</span></div></div>
+      </div>
+    </section>
+    <section class="wf__region" style="grid-column:2;grid-row:3;min-height:260px;border-radius:14px;border-width:1px;border-color:var(--wf-line, currentColor);padding:min(36px, 6vw)">
+      <div class="wf-sec" style="align-items:flex-start">
+        <h2 class="wf-sec__title"></h2>
+        <div class="wf-sec__cols" style="grid-template-columns:repeat(1, minmax(0, 1fr))">
+          <p class="wf-sec__body"></p>
+        </div>
+        <div class="wf-stats"><div class="wf-stat"><b class="wf-stat__num"><i class="wf-stat__count" style="--wf-n-to:24" aria-hidden="true"></i><span class="wf-stat__plain" aria-hidden="true">24</span><span class="wf-stat__suffix" aria-hidden="true">편</span><span class="wf-sr">24편</span></b><span class="wf-stat__label">막힌 지점을 적은 글</span></div></div>
+      </div>
+    </section>
+    <section class="wf__region" style="grid-column:3;grid-row:3;min-height:260px;border-radius:14px;border-width:1px;border-color:var(--wf-line, currentColor);padding:min(36px, 6vw)">
+      <div class="wf-sec" style="align-items:flex-start">
+        <h2 class="wf-sec__title"></h2>
+        <div class="wf-sec__cols" style="grid-template-columns:repeat(1, minmax(0, 1fr))">
+          <p class="wf-sec__body"></p>
+        </div>
+        <div class="wf-stats"><div class="wf-stat"><b class="wf-stat__num"><i class="wf-stat__count" style="--wf-n-to:3" aria-hidden="true"></i><span class="wf-stat__plain" aria-hidden="true">3</span><span class="wf-stat__suffix" aria-hidden="true">개</span><span class="wf-sr">3개</span></b><span class="wf-stat__label">자격증 — 정처기·SQLD·AWS</span></div></div>
+      </div>
+    </section>
+    <section class="wf__region" style="grid-column:4;grid-row:3;min-height:260px;border-radius:14px;border-width:1px;border-color:var(--wf-line, currentColor);padding:min(36px, 6vw)">
+      <div class="wf-sec" style="align-items:flex-start">
+        <h2 class="wf-sec__title"></h2>
+        <div class="wf-sec__cols" style="grid-template-columns:repeat(1, minmax(0, 1fr))">
+          <p class="wf-sec__body"></p>
+        </div>
+        <div class="wf-stats"><div class="wf-stat"><b class="wf-stat__num"><i class="wf-stat__count" style="--wf-n-to:2" aria-hidden="true"></i><span class="wf-stat__plain" aria-hidden="true">2</span><span class="wf-stat__suffix" aria-hidden="true">회</span><span class="wf-sr">2회</span></b><span class="wf-stat__label">팀 프로젝트 백엔드 리드</span></div></div>
+      </div>
+    </section>
+    </div>
+    <div class="wf wf--row" style="grid-template-columns:repeat(1, minmax(0, 1fr));gap:12px">
+      <section class="wf__region" id="introduce" style="min-height:240px;border-radius:14px;border-width:1px;border-color:var(--wf-line, currentColor);padding:min(36px, 6vw)" data-fx="reveal" data-fx-preset="rise" data-fx-duration="650" data-fx-delay="0" data-fx-distance="24" data-fx-threshold="0.15" data-fx-repeat="false">
+      <div class="wf-sec" style="align-items:flex-start">
+        <h2 class="wf-sec__title">Introduce</h2>
+        <div class="wf-sec__cols" style="grid-template-columns:repeat(1, minmax(0, 1fr))">
+          <p class="wf-sec__body">전공 수업에서 처음 만든 웹 페이지가 친구들 과제 제출 도우미가 됐을 때, &quot;내가 만든 것을 남이 쓴다&quot;는 감각을 처음 배웠습니다. 그 뒤로는 배우는 것마다 작게라도 만들어 세상에 내놓는 것을 원칙으로 삼고 있습니다.<br /><br />부트캠프에서는 4인 팀의 백엔드를 맡아 기능 하나하나보다 &quot;왜 이렇게 나누는가&quot;를 묻는 버릇을 들였습니다. 모르는 것은 기록하고, 막힌 지점은 글로 남깁니다 — 아래 프로젝트 상세에 트러블슈팅까지 그대로 적어 두었습니다.</p>
+        </div>
+        
+      </div>
+    </section>
+    </div>
+    <div class="wf wf--row" style="grid-template-columns:repeat(3, minmax(0, 1fr));gap:12px">
+      <section class="wf__region" id="frontend" style="min-height:240px;border-radius:14px;border-width:1px;border-color:var(--wf-line, currentColor);padding:min(36px, 6vw)" data-fx="reveal" data-fx-preset="rise" data-fx-duration="650" data-fx-delay="0" data-fx-distance="24" data-fx-threshold="0.15" data-fx-repeat="false">
+      <div class="wf-sec" style="align-items:flex-start">
+        <h2 class="wf-sec__title">Frontend</h2>
+        <div class="wf-sec__cols" style="grid-template-columns:repeat(1, minmax(0, 1fr))">
+          <p class="wf-sec__body"></p>
+        </div>
+        <div class="wf-tags wf-tags--badges"><span class="wf-tag wf-tag--badge" style="--bdg-bg:#E34F26;--bdg-fg:#ffffff"><svg class="wf-tag__logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z" fill="currentColor"/></svg>HTML</span><span class="wf-tag wf-tag--badge" style="--bdg-bg:#1572B6;--bdg-fg:#ffffff"><svg class="wf-tag__logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0v20.16A3.84 3.84 0 0 0 3.84 24h16.32A3.84 3.84 0 0 0 24 20.16V3.84A3.84 3.84 0 0 0 20.16 0Zm14.256 13.08c1.56 0 2.28 1.08 2.304 2.64h-1.608c.024-.288-.048-.6-.144-.84-.096-.192-.288-.264-.552-.264-.456 0-.696.264-.696.84-.024.576.288.888.768 1.08.72.288 1.608.744 1.92 1.296q.432.648.432 1.656c0 1.608-.912 2.592-2.496 2.592-1.656 0-2.4-1.032-2.424-2.688h1.68c0 .792.264 1.176.792 1.176.264 0 .456-.072.552-.24.192-.312.24-1.176-.048-1.512-.312-.408-.912-.6-1.32-.816q-.828-.396-1.224-.936c-.24-.36-.36-.888-.36-1.536 0-1.44.936-2.472 2.424-2.448m5.4 0c1.584 0 2.304 1.08 2.328 2.64h-1.608c0-.288-.048-.6-.168-.84-.096-.192-.264-.264-.528-.264-.48 0-.72.264-.72.84s.288.888.792 1.08c.696.288 1.608.744 1.92 1.296.264.432.408.984.408 1.656.024 1.608-.888 2.592-2.472 2.592-1.68 0-2.424-1.056-2.448-2.688h1.68c0 .744.264 1.176.792 1.176.264 0 .456-.072.552-.24.216-.312.264-1.176-.048-1.512-.288-.408-.888-.6-1.32-.816-.552-.264-.96-.576-1.2-.936s-.36-.888-.36-1.536c-.024-1.44.912-2.472 2.4-2.448m-11.031.018c.711-.006 1.419.198 1.839.63.432.432.672 1.128.648 1.992H9.336c.024-.456-.096-.792-.432-.96-.312-.144-.768-.048-.888.24-.12.264-.192.576-.168.864v3.504c0 .744.264 1.128.768 1.128a.65.65 0 0 0 .552-.264c.168-.24.192-.552.168-.84h1.776c.096 1.632-.984 2.712-2.568 2.688-1.536 0-2.496-.864-2.472-2.472v-4.032c0-.816.24-1.44.696-1.848.432-.408 1.146-.624 1.857-.63" fill="currentColor"/></svg>CSS</span><span class="wf-tag wf-tag--badge" style="--bdg-bg:#F7DF1E;--bdg-fg:#111111"><svg class="wf-tag__logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z" fill="currentColor"/></svg>JavaScript</span><span class="wf-tag wf-tag--badge" style="--bdg-bg:#3178C6;--bdg-fg:#ffffff"><svg class="wf-tag__logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z" fill="currentColor"/></svg>TypeScript</span><span class="wf-tag wf-tag--badge" style="--bdg-bg:#61DAFB;--bdg-fg:#111111"><svg class="wf-tag__logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87-.728.063-1.466.098-2.21.098-.74 0-1.477-.035-2.202-.093-.406-.582-.802-1.204-1.183-1.86-.372-.64-.71-1.29-1.018-1.946.303-.657.646-1.313 1.013-1.954.38-.66.773-1.286 1.18-1.868.728-.064 1.466-.098 2.21-.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933-.2-.39-.41-.783-.64-1.174-.225-.392-.465-.774-.705-1.146zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493-.28-.958-.646-1.956-1.1-2.98.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98-.45 1.017-.812 2.01-1.086 2.964-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474 0-.768 1.12-1.742 2.852-2.476.42-.18.88-.342 1.356-.494zm11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39.24-.375.48-.762.705-1.158.225-.39.435-.788.636-1.18zm-9.945.02c.2.392.41.783.64 1.175.23.39.465.772.705 1.143-.695-.102-1.365-.23-2.006-.386.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295-.22-.005-.406-.05-.553-.132-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64c.44.02.89.034 1.345.034.46 0 .915-.01 1.36-.034-.44.572-.895 1.095-1.345 1.565-.455-.47-.91-.993-1.36-1.565z" fill="currentColor"/></svg>React</span></div>
+      </div>
+    </section>
+      <section class="wf__region" id="backend" style="min-height:240px;border-radius:14px;border-width:1px;border-color:var(--wf-line, currentColor);padding:min(36px, 6vw)">
+      <div class="wf-sec" style="align-items:flex-start">
+        <h2 class="wf-sec__title">Backend</h2>
+        <div class="wf-sec__cols" style="grid-template-columns:repeat(1, minmax(0, 1fr))">
+          <p class="wf-sec__body"></p>
+        </div>
+        <div class="wf-tags wf-tags--badges"><span class="wf-tag wf-tag--badge" style="--bdg-bg:#007396;--bdg-fg:#ffffff"><svg class="wf-tag__logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.915 0 11.7.215C9.515 2.4 7.47 6.39 6.046 10.483c-1.064 1.024-3.633 2.81-3.711 3.551-.093.87 1.746 2.611 1.55 3.235-.198.625-1.304 1.408-1.014 1.939.1.188.823.011 1.277-.491a13.389 13.389 0 0 0-.017 2.14c.076.906.27 1.668.643 2.232.372.563.956.911 1.667.911.397 0 .727-.114 1.024-.264.298-.149.571-.33.91-.5.68-.34 1.634-.666 3.53-.604 1.903.062 2.872.39 3.559.704.687.314 1.15.664 1.925.664.767 0 1.395-.336 1.807-.9.412-.563.631-1.33.72-2.24.06-.623.055-1.32 0-2.066.454.45 1.117.604 1.213.424.29-.53-.816-1.314-1.013-1.937-.198-.624 1.642-2.366 1.549-3.236-.08-.748-2.707-2.568-3.748-3.586C16.428 6.374 14.308 2.394 12.13.215zm.175 6.038a2.95 2.95 0 0 1 2.943 2.942 2.95 2.95 0 0 1-2.943 2.943A2.95 2.95 0 0 1 9.148 8.98a2.95 2.95 0 0 1 2.942-2.942zM8.685 7.983a3.515 3.515 0 0 0-.145.997c0 1.951 1.6 3.55 3.55 3.55 1.95 0 3.55-1.598 3.55-3.55 0-.329-.046-.648-.132-.951.334.095.64.208.915.336a42.699 42.699 0 0 1 2.042 5.829c.678 2.545 1.01 4.92.846 6.607-.082.844-.29 1.51-.606 1.94-.315.431-.713.651-1.315.651-.593 0-.932-.27-1.673-.61-.741-.338-1.825-.694-3.792-.758-1.974-.064-3.073.293-3.821.669-.375.188-.659.373-.911.5s-.466.2-.752.2c-.53 0-.876-.209-1.16-.64-.285-.43-.474-1.101-.545-1.948-.141-1.693.176-4.069.823-6.614a43.155 43.155 0 0 1 1.934-5.783c.348-.167.749-.31 1.192-.425zm-3.382 4.362a.216.216 0 0 1 .13.031c-.166.56-.323 1.116-.463 1.665a33.849 33.849 0 0 0-.547 2.555 3.9 3.9 0 0 0-.2-.39c-.58-1.012-.914-1.642-1.16-2.08.315-.24 1.679-1.755 2.24-1.781zm13.394.01c.562.027 1.926 1.543 2.24 1.783-.246.438-.58 1.068-1.16 2.08a4.428 4.428 0 0 0-.163.309 32.354 32.354 0 0 0-.562-2.49 40.579 40.579 0 0 0-.482-1.652.216.216 0 0 1 .127-.03z" fill="currentColor"/></svg>Java</span><span class="wf-tag wf-tag--badge" style="--bdg-bg:#6DB33F;--bdg-fg:#ffffff"><svg class="wf-tag__logo" viewBox="0 0 24 24" aria-hidden="true"><path d="m23.693 10.7058-4.73-8.1844c-.4094-.7106-1.4166-1.2942-2.2402-1.2942H7.2725c-.819 0-1.8308.5836-2.2402 1.2942L.307 10.7058c-.4095.7106-.4095 1.873 0 2.5837l4.7252 8.189c.4094.7107 1.4166 1.2943 2.2402 1.2943h9.455c.819 0 1.826-.5836 2.2402-1.2942l4.7252-8.189c.4095-.7107.4095-1.8732 0-2.5838zM10.9763 5.7547c0-.5365.4377-.9742.9742-.9742s.9742.4377.9742.9742v5.8217c0 .5366-.4377.9742-.9742.9742s-.9742-.4376-.9742-.9742zm.9742 12.4294c-3.6427 0-6.6077-2.965-6.6077-6.6077.0047-2.0896.993-4.0521 2.6685-5.304a.8657.8657 0 0 1 1.2142.1788.8657.8657 0 0 1-.1788 1.2143c-2.1602 1.6048-2.612 4.6592-1.0072 6.8194 1.6049 2.1603 4.6593 2.612 6.8195 1.0072 1.2378-.9177 1.9673-2.372 1.9673-3.9157a4.8972 4.8972 0 0 0-1.9861-3.925c-.386-.2824-.466-.8284-.1836-1.2143.2824-.386.8283-.466 1.2143-.1835 1.6895 1.2471 2.6826 3.2238 2.6873 5.3228 0 3.6474-2.965 6.6077-6.6077 6.6077z" fill="currentColor"/></svg>Spring Boot</span><span class="wf-tag wf-tag--badge" style="--bdg-bg:#6DB33F;--bdg-fg:#ffffff"><svg class="wf-tag__logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.8537 1.4158a10.4504 10.4504 0 0 1-1.284 2.2471A11.9666 11.9666 0 1 0 3.8518 20.7757l.4445.3951a11.9543 11.9543 0 0 0 19.6316-8.2971c.3457-3.0126-.568-6.8649-2.0743-11.458zM5.5805 20.8745a1.0174 1.0174 0 1 1-.1482-1.4323 1.0396 1.0396 0 0 1 .1482 1.4323zm16.1991-3.5806c-2.9385 3.9263-9.2601 2.5928-13.2852 2.7904 0 0-.7161.0494-1.4323.1481 0 0 .2717-.1234.6174-.2469 2.8398-.9877 4.1732-1.1853 5.9018-2.0743 3.2349-1.6545 6.4698-5.2844 7.1118-9.0379-1.2347 3.6053-4.9881 6.7167-8.3959 7.9761-2.3459.8643-6.5685 1.7039-6.5685 1.7039l-.1729-.0988c-2.8645-1.4076-2.9632-7.6304 2.2718-9.6306 2.2966-.889 4.4696-.395 6.9637-.9877 2.6422-.6174 5.7043-2.5929 6.939-5.1857 1.3828 4.1732 3.062 10.643.0493 14.6434z" fill="currentColor"/></svg>JPA</span><span class="wf-tag wf-tag--badge" style="--bdg-bg:#4479A1;--bdg-fg:#ffffff"><svg class="wf-tag__logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.405 5.501c-.115 0-.193.014-.274.033v.013h.014c.054.104.146.18.214.273.054.107.1.214.154.32l.014-.015c.094-.066.14-.172.14-.333-.04-.047-.046-.094-.08-.14-.04-.067-.126-.1-.18-.153zM5.77 18.695h-.927a50.854 50.854 0 00-.27-4.41h-.008l-1.41 4.41H2.45l-1.4-4.41h-.01a72.892 72.892 0 00-.195 4.41H0c.055-1.966.192-3.81.41-5.53h1.15l1.335 4.064h.008l1.347-4.064h1.095c.242 2.015.384 3.86.428 5.53zm4.017-4.08c-.378 2.045-.876 3.533-1.492 4.46-.482.716-1.01 1.073-1.583 1.073-.153 0-.34-.046-.566-.138v-.494c.11.017.24.026.386.026.268 0 .483-.075.647-.222.197-.18.295-.382.295-.605 0-.155-.077-.47-.23-.944L6.23 14.615h.91l.727 2.36c.164.536.233.91.205 1.123.4-1.064.678-2.227.835-3.483zm12.325 4.08h-2.63v-5.53h.885v4.85h1.745zm-3.32.135l-1.016-.5c.09-.076.177-.158.255-.25.433-.506.648-1.258.648-2.253 0-1.83-.718-2.746-2.155-2.746-.704 0-1.254.232-1.65.697-.43.508-.646 1.256-.646 2.245 0 .972.19 1.686.574 2.14.35.41.877.615 1.583.615.264 0 .506-.033.725-.098l1.325.772.36-.622zM15.5 17.588c-.225-.36-.337-.94-.337-1.736 0-1.393.424-2.09 1.27-2.09.443 0 .77.167.977.5.224.362.336.936.336 1.723 0 1.404-.424 2.108-1.27 2.108-.445 0-.77-.167-.978-.5zm-1.658-.425c0 .47-.172.856-.516 1.156-.344.3-.803.45-1.384.45-.543 0-1.064-.172-1.573-.515l.237-.476c.438.22.833.328 1.19.328.332 0 .593-.073.783-.22a.754.754 0 00.3-.615c0-.33-.23-.61-.648-.845-.388-.213-1.163-.657-1.163-.657-.422-.307-.632-.636-.632-1.177 0-.45.157-.81.47-1.085.315-.278.72-.415 1.22-.415.512 0 .98.136 1.4.41l-.213.476a2.726 2.726 0 00-1.064-.23c-.283 0-.502.068-.654.206a.685.685 0 00-.248.524c0 .328.234.61.666.85.393.215 1.187.67 1.187.67.433.305.648.63.648 1.168zm9.382-5.852c-.535-.014-.95.04-1.297.188-.1.04-.26.04-.274.167.055.053.063.14.11.214.08.134.218.313.346.407.14.11.28.216.427.31.26.16.555.255.81.416.145.094.293.213.44.313.073.05.12.14.214.172v-.02c-.046-.06-.06-.147-.105-.214-.067-.067-.134-.127-.2-.193a3.223 3.223 0 00-.695-.675c-.214-.146-.682-.35-.77-.595l-.013-.014c.146-.013.32-.066.46-.106.227-.06.435-.047.67-.106.106-.027.213-.06.32-.094v-.06c-.12-.12-.21-.283-.334-.395a8.867 8.867 0 00-1.104-.823c-.21-.134-.476-.22-.697-.334-.08-.04-.214-.06-.26-.127-.12-.146-.19-.34-.275-.514a17.69 17.69 0 01-.547-1.163c-.12-.262-.193-.523-.34-.763-.69-1.137-1.437-1.826-2.586-2.5-.247-.14-.543-.2-.856-.274-.167-.008-.334-.02-.5-.027-.11-.047-.216-.174-.31-.235-.38-.24-1.364-.76-1.644-.072-.18.434.267.862.422 1.082.115.153.26.328.34.5.047.116.06.235.107.356.106.294.207.622.347.897.073.14.153.287.247.413.054.073.146.107.167.227-.094.136-.1.334-.154.5-.24.757-.146 1.693.194 2.25.107.166.362.534.703.393.3-.12.234-.5.32-.835.02-.08.007-.133.048-.187v.015c.094.188.188.367.274.555.206.328.566.668.867.895.16.12.287.328.487.402v-.02h-.015c-.043-.058-.1-.086-.154-.133a3.445 3.445 0 01-.35-.4 8.76 8.76 0 01-.747-1.218c-.11-.21-.202-.436-.29-.643-.04-.08-.04-.2-.107-.24-.1.146-.247.273-.32.453-.127.288-.14.642-.188 1.01-.027.007-.014 0-.027.014-.214-.052-.287-.274-.367-.46-.2-.475-.233-1.238-.06-1.785.047-.14.247-.582.167-.716-.042-.127-.174-.2-.247-.303a2.478 2.478 0 01-.24-.427c-.16-.374-.24-.788-.414-1.162-.08-.173-.22-.354-.334-.513-.127-.18-.267-.307-.368-.52-.033-.073-.08-.194-.027-.274.014-.054.042-.075.094-.09.088-.072.335.022.422.062.247.1.455.194.662.334.094.066.195.193.315.226h.14c.214.047.455.014.655.073.355.114.675.28.962.46a5.953 5.953 0 012.085 2.286c.08.154.115.295.188.455.14.33.313.663.455.982.14.315.275.636.476.897.1.14.502.213.682.286.133.06.34.115.46.188.23.14.454.3.67.454.11.076.443.243.463.378z" fill="currentColor"/></svg>MySQL</span><span class="wf-tag wf-tag--badge" style="--bdg-bg:#DC382D;--bdg-fg:#ffffff"><svg class="wf-tag__logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.71 13.145c-1.66 2.092-3.452 4.483-7.038 4.483-3.203 0-4.397-2.825-4.48-5.12.701 1.484 2.073 2.685 4.214 2.63 4.117-.133 6.94-3.852 6.94-7.239 0-4.05-3.022-6.972-8.268-6.972-3.752 0-8.4 1.428-11.455 3.685C2.59 6.937 3.885 9.958 4.35 9.626c2.648-1.904 4.748-3.13 6.784-3.744C8.12 9.244.886 17.05 0 18.425c.1 1.261 1.66 4.648 2.424 4.648.232 0 .431-.133.664-.365a100.49 100.49 0 0 0 5.54-6.765c.222 3.104 1.748 6.898 6.014 6.898 3.819 0 7.604-2.756 9.33-8.965.2-.764-.73-1.361-1.261-.73zm-4.349-5.013c0 1.959-1.926 2.922-3.685 2.922-.941 0-1.664-.247-2.235-.568 1.051-1.592 2.092-3.225 3.21-4.973 1.972.334 2.71 1.43 2.71 2.619z" fill="currentColor"/></svg>Redis</span></div>
+      </div>
+    </section>
+      <section class="wf__region" id="infra-tools" style="min-height:240px;border-radius:14px;border-width:1px;border-color:var(--wf-line, currentColor);padding:min(36px, 6vw)">
+      <div class="wf-sec" style="align-items:flex-start">
+        <h2 class="wf-sec__title">Infra · Tools</h2>
+        <div class="wf-sec__cols" style="grid-template-columns:repeat(1, minmax(0, 1fr))">
+          <p class="wf-sec__body"></p>
+        </div>
+        <div class="wf-tags wf-tags--badges"><span class="wf-tag wf-tag--badge" style="--bdg-bg:#2496ED;--bdg-fg:#ffffff"><svg class="wf-tag__logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.082.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338.001-.676.03-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 00-.75.748 11.376 11.376 0 00.692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983.003 1.963-.086 2.93-.266a12.248 12.248 0 003.823-1.389c.98-.567 1.86-1.288 2.61-2.136 1.252-1.418 1.998-2.997 2.553-4.4h.221c1.372 0 2.215-.549 2.68-1.009.309-.293.55-.65.707-1.046l.098-.288Z" fill="currentColor"/></svg>Docker</span><span class="wf-tag wf-tag--badge" style="--bdg-bg:#FF9900;--bdg-fg:#111111">AWS EC2</span><span class="wf-tag wf-tag--badge" style="--bdg-bg:#009639;--bdg-fg:#ffffff"><svg class="wf-tag__logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0L1.605 6v12L12 24l10.395-6V6L12 0zm6 16.59c0 .705-.646 1.29-1.529 1.29-.631 0-1.351-.255-1.801-.81l-6-7.141v6.66c0 .721-.57 1.29-1.274 1.29H7.32c-.721 0-1.29-.6-1.29-1.29V7.41c0-.705.63-1.29 1.5-1.29.646 0 1.38.255 1.83.81l5.97 7.141V7.41c0-.721.6-1.29 1.29-1.29h.075c.72 0 1.29.6 1.29 1.29v9.18H18z" fill="currentColor"/></svg>Nginx</span><span class="wf-tag wf-tag--badge" style="--bdg-bg:#2088FF;--bdg-fg:#ffffff"><svg class="wf-tag__logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.984 13.836a.5.5 0 0 1-.353-.146l-.745-.743a.5.5 0 1 1 .706-.708l.392.391 1.181-1.18a.5.5 0 0 1 .708.707l-1.535 1.533a.504.504 0 0 1-.354.146zm9.353-.147l1.534-1.532a.5.5 0 0 0-.707-.707l-1.181 1.18-.392-.391a.5.5 0 1 0-.706.708l.746.743a.497.497 0 0 0 .706-.001zM4.527 7.452l2.557-1.585A1 1 0 0 0 7.09 4.17L4.533 2.56A1 1 0 0 0 3 3.406v3.196a1.001 1.001 0 0 0 1.527.85zm2.03-2.436L4 6.602V3.406l2.557 1.61zM24 12.5c0 1.93-1.57 3.5-3.5 3.5a3.503 3.503 0 0 1-3.46-3h-2.08a3.503 3.503 0 0 1-3.46 3 3.502 3.502 0 0 1-3.46-3h-.558c-.972 0-1.85-.399-2.482-1.042V17c0 1.654 1.346 3 3 3h.04c.244-1.693 1.7-3 3.46-3 1.93 0 3.5 1.57 3.5 3.5S13.43 24 11.5 24a3.502 3.502 0 0 1-3.46-3H8c-2.206 0-4-1.794-4-4V9.899A5.008 5.008 0 0 1 0 5c0-2.757 2.243-5 5-5s5 2.243 5 5a5.005 5.005 0 0 1-4.952 4.998A2.482 2.482 0 0 0 7.482 12h.558c.244-1.693 1.7-3 3.46-3a3.502 3.502 0 0 1 3.46 3h2.08a3.503 3.503 0 0 1 3.46-3c1.93 0 3.5 1.57 3.5 3.5zm-15 8c0 1.378 1.122 2.5 2.5 2.5s2.5-1.122 2.5-2.5-1.122-2.5-2.5-2.5S9 19.122 9 20.5zM5 9c2.206 0 4-1.794 4-4S7.206 1 5 1 1 2.794 1 5s1.794 4 4 4zm9 3.5c0-1.378-1.122-2.5-2.5-2.5S9 11.122 9 12.5s1.122 2.5 2.5 2.5 2.5-1.122 2.5-2.5zm9 0c0-1.378-1.122-2.5-2.5-2.5S18 11.122 18 12.5s1.122 2.5 2.5 2.5 2.5-1.122 2.5-2.5zm-13 8a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0zm2 0a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0zm12 0c0 1.93-1.57 3.5-3.5 3.5a3.503 3.503 0 0 1-3.46-3.002c-.007.001-.013.005-.021.005l-.506.017h-.017a.5.5 0 0 1-.016-.999l.506-.017c.018-.002.035.006.052.007A3.503 3.503 0 0 1 20.5 17c1.93 0 3.5 1.57 3.5 3.5zm-1 0c0-1.378-1.122-2.5-2.5-2.5S18 19.122 18 20.5s1.122 2.5 2.5 2.5 2.5-1.122 2.5-2.5z" fill="currentColor"/></svg>GitHub Actions</span><span class="wf-tag wf-tag--badge" style="--bdg-bg:#F05032;--bdg-fg:#ffffff"><svg class="wf-tag__logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.09 23.549a1.54 1.54 0 0 1-2.18 0L.451 13.089a1.54 1.54 0 0 1 0-2.179l7.191-7.19 2.733 2.733a1.85 1.85 0 0 0 .964 2.326v6.66a1.849 1.849 0 1 0 1.54 0V8.957l2.508 2.508a1.85 1.85 0 1 0 1.09-1.09l-2.634-2.634a1.85 1.85 0 0 0-2.378-2.377L8.73 2.63 10.91.451a1.54 1.54 0 0 1 2.179 0l10.459 10.46a1.54 1.54 0 0 1 0 2.179z" fill="currentColor"/></svg>Git</span></div>
+      </div>
+    </section>
+    </div>
+    <div class="wf wf--row" style="grid-template-columns:repeat(1, minmax(0, 1fr));gap:12px">
+      <section class="wf__region" id="projects" style="min-height:300px;border-radius:14px;border-width:1px;border-color:var(--wf-line, currentColor);padding:min(36px, 6vw)" data-fx="reveal preview" data-fx-scroll-reveal-preset="rise" data-fx-scroll-reveal-duration="650" data-fx-scroll-reveal-delay="0" data-fx-scroll-reveal-distance="24" data-fx-scroll-reveal-threshold="0.15" data-fx-scroll-reveal-repeat="false" data-fx-hover-preview-width="240" data-fx-hover-preview-speed="0.16" data-fx-hover-preview-offset-x="24" data-fx-hover-preview-offset-y="-20" data-fx-hover-preview-rotate="3">
+      <div class="wf-gal">
+        <h2 class="wf-sec__title">Projects</h2>
+        <div class="wf-gal__grid" style="grid-template-columns:repeat(3, minmax(0, 1fr))">
+          <a class="wf-card has-detail" href="#detail-x3-1-1"><span class="wf-card__thumb" style="padding-bottom:72%"><img class="wf-card__img" src="./assets/images/img14msoby13d1.jpg" alt="모두의 장부 — 계산기와 장부" loading="lazy" style="object-fit:cover" /></span><span class="wf-card__body">
+              <b class="wf-card__title">모두의 장부</b>
+              <span class="wf-card__stack">React · Spring Boot · MySQL</span>
+              <span class="wf-card__desc">동아리 회비를 투명하게 — 4인 팀, 백엔드 담당.</span>
+              <span class="wf-card__link">↗ 링크</span>
+            </span></a>
+          <a class="wf-card has-detail" href="#detail-x3-1-2"><span class="wf-card__thumb" style="padding-bottom:72%"><img class="wf-card__img" src="./assets/images/img14msoby17i2.jpg" alt="한 줄 회고 — 포스트잇 보드" loading="lazy" style="object-fit:cover" /></span><span class="wf-card__body">
+              <b class="wf-card__title">한 줄 회고</b>
+              <span class="wf-card__stack">TypeScript · React · Supabase</span>
+              <span class="wf-card__desc">팀 회고를 한 줄씩 쌓는 서비스 — 개인 프로젝트.</span>
+              <span class="wf-card__link">↗ 링크</span>
+            </span></a>
+          <a class="wf-card has-detail" href="#detail-x3-1-3"><span class="wf-card__thumb" style="padding-bottom:72%"><img class="wf-card__img" src="./assets/images/img14msoby2t43.jpg" alt="혼자서 한 바퀴 — 서버 랙" loading="lazy" style="object-fit:cover" /></span><span class="wf-card__body">
+              <b class="wf-card__title">혼자서 한 바퀴</b>
+              <span class="wf-card__stack">Docker · GitHub Actions · Nginx</span>
+              <span class="wf-card__desc">커밋하면 서버에 올라가는 나만의 배포 파이프라인.</span>
+              <span class="wf-card__link">↗ 링크</span>
+            </span></a>
+        </div>
+        <div class="wf-detail" id="detail-x3-1-1">
+            <a class="wf-detail__scrim" href="#" aria-label="닫기"></a>
+            <div class="wf-detail__box">
+              <a class="wf-detail__close" href="#" aria-label="닫기">✕</a>
+              <img class="wf-detail__img" src="./assets/images/img14msoby13d1.jpg" alt="모두의 장부 — 계산기와 장부" loading="lazy" style="object-fit:cover" />
+              <b class="wf-detail__title">모두의 장부</b>
+              <span class="wf-card__stack">React · Spring Boot · MySQL</span>
+              <p class="wf-detail__body">동아리 회계 담당이 바뀔 때마다 엑셀이 유실되는 문제에서 출발했습니다.<br /><br />[역할] 회비 입출금 API 설계와 구현, 월별 정산 배치, EC2 배포를 맡았습니다.<br />[성과] 정산 화면을 여러 번 나눠 부르던 요청을 한 번으로 묶어 첫 화면이 끊김 없이 뜨게 했습니다. 학교 동아리 3곳이 실제로 씁니다.<br />[트러블슈팅] 월말 정산 때 같은 요청이 겹치면 잔액이 어긋나던 문제 — 정산 로직에 잠금을 걸어 한 번에 하나만 처리하게 해서 해결했습니다. 과정은 블로그에 정리해 두었습니다.</p>
+              <a class="wf-card__link" href="https://github.com/" target="_blank" rel="noreferrer noopener">↗ 링크 열기</a>
+            </div>
+          </div>
+        <div class="wf-detail" id="detail-x3-1-2">
+            <a class="wf-detail__scrim" href="#" aria-label="닫기"></a>
+            <div class="wf-detail__box">
+              <a class="wf-detail__close" href="#" aria-label="닫기">✕</a>
+              <img class="wf-detail__img" src="./assets/images/img14msoby17i2.jpg" alt="한 줄 회고 — 포스트잇 보드" loading="lazy" style="object-fit:cover" />
+              <b class="wf-detail__title">한 줄 회고</b>
+              <span class="wf-card__stack">TypeScript · React · Supabase</span>
+              <p class="wf-detail__body">회고가 길면 아무도 안 쓴다는 데서 출발한 실험입니다. 하루 한 줄만 남기면 금요일에 팀 회고 카드로 묶어 줍니다.<br /><br />[역할] 기획부터 배포까지 혼자 진행했습니다.<br />[성과] 부트캠프 동기 두 팀이 스프린트 회고에 실제로 사용했고, 익명 모드 요청을 받아 반영했습니다.<br />[트러블슈팅] 실시간 반영이 탭마다 어긋나던 문제 — 구독 채널을 팀 단위로 좁혀 해결했습니다.</p>
+              <a class="wf-card__link" href="https://github.com/" target="_blank" rel="noreferrer noopener">↗ 링크 열기</a>
+            </div>
+          </div>
+        <div class="wf-detail" id="detail-x3-1-3">
+            <a class="wf-detail__scrim" href="#" aria-label="닫기"></a>
+            <div class="wf-detail__box">
+              <a class="wf-detail__close" href="#" aria-label="닫기">✕</a>
+              <img class="wf-detail__img" src="./assets/images/img14msoby2t43.jpg" alt="혼자서 한 바퀴 — 서버 랙" loading="lazy" style="object-fit:cover" />
+              <b class="wf-detail__title">혼자서 한 바퀴</b>
+              <span class="wf-card__stack">Docker · GitHub Actions · Nginx</span>
+              <p class="wf-detail__body">&quot;배포는 어렵다&quot;를 없애 보려고 만든 학습 프로젝트입니다. main에 커밋하면 테스트 → 이미지 빌드 → EC2 반영까지 자동으로 흐릅니다.<br /><br />[역할] 파이프라인 전체 구성과 문서화.<br />[성과] 이후 모든 개인 프로젝트가 이 파이프라인 위에서 돕니다. 같은 과정 수강생 대상 세미나로 공유했습니다.<br />[트러블슈팅] 새 버전을 올릴 때 잠깐 접속이 끊기던 문제 — 컨테이너를 먼저 띄우고 Nginx가 가리키는 곳만 바꾸는 방식으로 무중단에 가깝게 만들었습니다.</p>
+              <a class="wf-card__link" href="https://github.com/" target="_blank" rel="noreferrer noopener">↗ 링크 열기</a>
+            </div>
+          </div>
+      </div>
+    </section>
+    </div>
+    <div class="wf wf--row" style="grid-template-columns:repeat(1, minmax(0, 1fr));gap:12px">
+      <section class="wf__region" style="min-height:320px;border-radius:14px;border-width:1px;border-color:var(--wf-line, currentColor);padding:min(36px, 6vw)" data-fx="reveal" data-fx-preset="rise" data-fx-duration="650" data-fx-delay="0" data-fx-distance="24" data-fx-threshold="0.15" data-fx-repeat="false">
+      <div class="wf-tl">
+        <span class="wf-tl__eyebrow">education</span>
+        <h2 class="wf-tl__title">배운 길</h2>
+        <ol class="wf-tl__list"><li class="wf-tl__item"><span class="wf-tl__label">2021.03 — 2025.02</span><b class="wf-tl__head">한별대학교 컴퓨터공학과 졸업</b><p class="wf-tl__desc">자료구조·운영체제·데이터베이스. 4학년 캡스톤에서 교내 분실물 지도 서비스를 만들어 교내 창업 경진대회 장려상을 받았습니다.</p></li>
+        <li class="wf-tl__item"><span class="wf-tl__label">2025.03 — 2025.09</span><b class="wf-tl__head">풀스택 개발자 양성과정 수료</b><p class="wf-tl__desc">Java·Spring Boot·React 6개월 과정. 팀 프로젝트 2회에서 모두 백엔드 리드를 맡아 API 설계와 배포를 담당했습니다.</p></li>
+        <li class="wf-tl__item"><span class="wf-tl__label">2025.06 — 2025.11</span><b class="wf-tl__head">자격증 셋 — 정보처리기사 · SQLD · AWS CCP</b><p class="wf-tl__desc">과정과 병행해 기초를 증명할 수 있는 것부터 차례로 땄습니다.</p></li>
+        <li class="wf-tl__item"><span class="wf-tl__label">2025.10 — 지금</span><b class="wf-tl__head">매주 하나씩 만드는 중</b><p class="wf-tl__desc">개인 프로젝트를 매주 금요일에 배포합니다. 잘 안 된 것도 기록으로 남기고, 쓸 만한 것은 오픈소스로 정리합니다.</p></li></ol>
+      </div>
+    </section>
+    </div>
+    <div class="wf wf--row" style="grid-template-columns:repeat(1, minmax(0, 1fr));gap:12px">
+      <section class="wf__region" id="archiving" style="min-height:180px;border-radius:14px;border-width:1px;border-color:var(--wf-line, currentColor);padding:min(28px, 6vw)" data-fx="reveal" data-fx-preset="rise" data-fx-duration="650" data-fx-delay="0" data-fx-distance="24" data-fx-threshold="0.15" data-fx-repeat="false">
+      <div class="wf-links wf-links--cards" style="align-items:flex-start">
+        <h2 class="wf-sec__title">Archiving</h2>
+        <div class="wf-links__row">
+          <a class="wf-link" href="https://github.com/" target="_blank" rel="noreferrer noopener">GitHub<em class="wf-link__url">github.com</em><p class="wf-link__desc">수업 실습부터 팀 프로젝트까지 저장소별로 정리했습니다. 커밋 메시지에 &quot;왜&quot;를 적는 연습 중입니다.</p></a>
+          <a class="wf-link" href="https://velog.io/" target="_blank" rel="noreferrer noopener">기술 블로그<em class="wf-link__url">velog.io</em><p class="wf-link__desc">막힌 지점과 해결 과정을 씁니다. 트러블슈팅 글 24편 — 같은 곳에서 두 번 막히지 않으려고 시작했습니다.</p></a>
+          <a class="wf-link" href="https://www.notion.so/" target="_blank" rel="noreferrer noopener">학습 노트<em class="wf-link__url">www.notion.so</em><p class="wf-link__desc">강의별 개념 정리와 실습 코드. CS 전공 복습 노트를 주제별로 묶어 두었습니다.</p></a>
+        </div>
+      </div>
+    </section>
+    </div>
+    <div class="wf wf--row" style="grid-template-columns:repeat(1, minmax(0, 1fr));gap:12px">
+      <section class="wf__region" style="min-height:220px;border-radius:14px;border-width:1px;border-color:var(--wf-line, currentColor);padding:min(40px, 6vw)">
+      <div class="wf-contact" style="align-items:center;text-align:center">
+        <h2 class="wf-sec__title">Contact</h2>
+        <p class="wf-sec__body">같이 일해 보고 싶다면, 커피챗도 좋습니다.<br />하루 안에 답장합니다.</p>
+        <a class="wf-contact__mail is-big" href="mailto:haneul.dev@example.com">haneul.dev@example.com</a>
+        <span class="wf-contact__meta"><span>Seoul, KR</span></span>
+      </div>
+    </section>
+    </div>
+    <div class="wf wf--row" style="grid-template-columns:repeat(1, minmax(0, 1fr));gap:12px">
+      <div class="wf__region" id="contact" style="min-height:180px;border-radius:14px;border-width:1px;border-color:var(--wf-line, currentColor);padding:min(24px, 6vw)"><footer class="wf-bar wf-bar--foot" style="justify-content:space-between">
+        <span class="wf-foot__text">© 2026 Seo Haneul. Portfolio Maker로 만들었습니다.</span>
+        
+        
+        
+      </footer></div>
+    </div>
+    <a class="wf-down" href="#introduce" aria-label="아래로 이동"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+  </div>
+  <script type="module" src="./assets/init.js"></script>
+</body>
+</html>
