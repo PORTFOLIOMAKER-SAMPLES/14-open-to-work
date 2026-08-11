@@ -1044,13 +1044,54 @@ button { font: inherit; color: inherit; }
   container-type: inline-size;
   position: relative;
   width: 100%;
-  aspect-ratio: 91 / 55;
+  aspect-ratio: 9 / 5;   /* 90×50mm 국내 표준 (받은 디자인 시스템 기준) */
   margin: 0 auto;
   overflow: hidden;
   border: 1px solid var(--wf-line);
   border-radius: inherit;
   background: var(--wf-surface);
   --bc-accent: var(--wf-accent);
+
+  /*
+   * 받은 디자인 시스템(Myeongham)의 토큰입니다. `:root`가 아니라 카드 안에만
+   * 푸는 것은 사이트 테마와 섞이지 않게 하기 위해서입니다 — 명함은 제 색으로
+   * 서는 물건이고, 페이지 테마를 바꿔도 인쇄물 색이 따라 변하면 곤란합니다.
+   *
+   * 글꼴은 가이드가 지정한 Archivo·IBM Plex를 **CDN으로 불러오지 않습니다**.
+   * 결과물이 외부 요청 없이 혼자 돌아야 한다는 이 제품의 규칙이 우선이라,
+   * 같은 자리에 시스템 글꼴 묶음을 놓았습니다(모노는 실제 모노스페이스).
+   */
+  --bc-ink-900: #0B0C0E; --bc-ink-700: #1C1F24; --bc-ink-500: #4A5058;
+  --bc-ink-300: #8A9099; --bc-ink-200: #B9BCC1; --bc-ink-100: #D8D6D0;
+  --bc-paper-0: #FFFFFF; --bc-paper-1: #F4F2ED; --bc-paper-2: #EAE7DF;
+  --bc-signal: #1F5AE8; --bc-neon: #00E5A0; --bc-warm: #E8462B; --bc-gold: #D9A400;
+  --bc-syn-key: #7AA2FF; --bc-syn-str: #00E5A0; --bc-syn-num: #F0C455;
+  --bc-syn-com: #5A626C; --bc-syn-fn: #FF8A6B;
+  --bc-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+/*
+ * 가이드가 쓰는 네 조각 — 작은 라벨 / 이니셜 마크 / 한 줄 소개 / 기술 스택.
+ * 기본은 안 그립니다. 쓰는 디자인에서만 켭니다(옛 명함 넷은 그대로 둡니다).
+ */
+.wf-bcard__label,
+.wf-bcard__mono,
+.wf-bcard__tagline,
+.wf-bcard__stack { display: none; }
+.wf-bcard__label {
+  font-family: var(--bc-mono);
+  font-size: 2.3cqw; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+}
+.wf-bcard__mono {
+  font-size: 5.6cqw; font-weight: 800; letter-spacing: -0.03em; line-height: 1;
+}
+.wf-bcard__tagline {
+  margin: 0; font-size: 2.9cqw; line-height: 1.45; font-weight: 500;
+  text-wrap: pretty;
+}
+.wf-bcard__stack {
+  font-family: var(--bc-mono);
+  font-size: 2.2cqw; color: var(--bc-ink-300);
 }
 .wf-bcard__in {
   position: relative;
@@ -1095,6 +1136,225 @@ button { font: inherit; color: inherit; }
   text-decoration: none;
   white-space: nowrap;
 }
+/* ══ 받은 디자인 시스템(Myeongham)의 명함 8종 ═══════════════════
+ * 공통 골격: 위 줄 = 작은 라벨 ↔ 이니셜 마크, 가운데 = 이름·직함·연락처,
+ * 아래 줄 = 한 줄 소개(또는 기술 스택) ↔ QR. 안전영역 4mm(=4.4cqw).
+ * 액센트는 가이드 규칙대로 **한 장에 한 색**만 씁니다.
+ */
+.wf-bcard--quiet, .wf-bcard--shell, .wf-bcard--grid, .wf-bcard--night,
+.wf-bcard--signal, .wf-bcard--letter, .wf-bcard--swiss, .wf-bcard--syntax {
+  border-radius: 3px;
+  --bc-accent: var(--bc-signal);
+}
+.wf-bcard--quiet .wf-bcard__in, .wf-bcard--shell .wf-bcard__in,
+.wf-bcard--grid .wf-bcard__in, .wf-bcard--night .wf-bcard__in,
+.wf-bcard--signal .wf-bcard__in, .wf-bcard--letter .wf-bcard__in,
+.wf-bcard--swiss .wf-bcard__in, .wf-bcard--syntax .wf-bcard__in {
+  padding: 4.4cqw;
+  gap: 0;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr auto;
+}
+.wf-bcard--quiet .wf-bcard__label, .wf-bcard--shell .wf-bcard__label,
+.wf-bcard--grid .wf-bcard__label, .wf-bcard--night .wf-bcard__label,
+.wf-bcard--signal .wf-bcard__label, .wf-bcard--letter .wf-bcard__label,
+.wf-bcard--swiss .wf-bcard__label, .wf-bcard--syntax .wf-bcard__label {
+  display: block; grid-column: 1; grid-row: 1; color: var(--bc-ink-300);
+}
+.wf-bcard--quiet .wf-bcard__mono, .wf-bcard--shell .wf-bcard__mono,
+.wf-bcard--grid .wf-bcard__mono, .wf-bcard--night .wf-bcard__mono,
+.wf-bcard--signal .wf-bcard__mono, .wf-bcard--letter .wf-bcard__mono,
+.wf-bcard--swiss .wf-bcard__mono, .wf-bcard--syntax .wf-bcard__mono {
+  display: block; grid-column: 2; grid-row: 1; justify-self: end; color: var(--bc-accent);
+}
+/* 큰 분야 글자(예전 명함의 주인공)는 이 여덟 장에서 쓰지 않습니다 — 가이드의
+   위계는 '이름'이 가장 큽니다. */
+.wf-bcard--quiet .wf-bcard__lead, .wf-bcard--shell .wf-bcard__lead,
+.wf-bcard--grid .wf-bcard__lead, .wf-bcard--night .wf-bcard__lead,
+.wf-bcard--signal .wf-bcard__lead, .wf-bcard--letter .wf-bcard__lead,
+.wf-bcard--swiss .wf-bcard__lead, .wf-bcard--syntax .wf-bcard__lead { display: none; }
+.wf-bcard--quiet .wf-bcard__info, .wf-bcard--shell .wf-bcard__info,
+.wf-bcard--grid .wf-bcard__info, .wf-bcard--night .wf-bcard__info,
+.wf-bcard--signal .wf-bcard__info, .wf-bcard--letter .wf-bcard__info,
+.wf-bcard--swiss .wf-bcard__info, .wf-bcard--syntax .wf-bcard__info {
+  /* QR과 같은 줄에 섭니다 — 아래 줄을 따로 내주면 그 높이만큼 카드를 넘깁니다. */
+  grid-column: 1; grid-row: 2; justify-content: center; gap: 1.2cqw;
+}
+.wf-bcard--quiet .wf-bcard__name, .wf-bcard--shell .wf-bcard__name,
+.wf-bcard--grid .wf-bcard__name, .wf-bcard--night .wf-bcard__name,
+.wf-bcard--signal .wf-bcard__name, .wf-bcard--letter .wf-bcard__name,
+.wf-bcard--swiss .wf-bcard__name, .wf-bcard--syntax .wf-bcard__name {
+  font-size: 6.2cqw; letter-spacing: -0.03em;
+}
+.wf-bcard--quiet .wf-bcard__line, .wf-bcard--shell .wf-bcard__line,
+.wf-bcard--grid .wf-bcard__line, .wf-bcard--night .wf-bcard__line,
+.wf-bcard--signal .wf-bcard__line, .wf-bcard--letter .wf-bcard__line,
+.wf-bcard--swiss .wf-bcard__line, .wf-bcard--syntax .wf-bcard__line {
+  font-family: var(--bc-mono); font-size: 2.4cqw;
+}
+.wf-bcard--quiet .wf-bcard__ico, .wf-bcard--shell .wf-bcard__ico,
+.wf-bcard--grid .wf-bcard__ico, .wf-bcard--night .wf-bcard__ico,
+.wf-bcard--signal .wf-bcard__ico, .wf-bcard--letter .wf-bcard__ico,
+.wf-bcard--swiss .wf-bcard__ico, .wf-bcard--syntax .wf-bcard__ico {
+  /* 가이드는 명함 아이콘을 11px 고정으로 씁니다(360px 카드에서 약 3cqw). */
+  width: 3.4cqw; height: 3.4cqw;
+}
+.wf-bcard--quiet .wf-bcard__nameen, .wf-bcard--shell .wf-bcard__nameen,
+.wf-bcard--grid .wf-bcard__nameen, .wf-bcard--night .wf-bcard__nameen,
+.wf-bcard--signal .wf-bcard__nameen, .wf-bcard--letter .wf-bcard__nameen,
+.wf-bcard--swiss .wf-bcard__nameen, .wf-bcard--syntax .wf-bcard__nameen,
+.wf-bcard--quiet .wf-bcard__title, .wf-bcard--shell .wf-bcard__title,
+.wf-bcard--grid .wf-bcard__title, .wf-bcard--night .wf-bcard__title,
+.wf-bcard--signal .wf-bcard__title, .wf-bcard--letter .wf-bcard__title,
+.wf-bcard--swiss .wf-bcard__title, .wf-bcard--syntax .wf-bcard__title { font-size: 2.4cqw; }
+.wf-bcard--quiet .wf-bcard__stack, .wf-bcard--shell .wf-bcard__stack,
+.wf-bcard--grid .wf-bcard__stack, .wf-bcard--night .wf-bcard__stack,
+.wf-bcard--signal .wf-bcard__stack, .wf-bcard--letter .wf-bcard__stack,
+.wf-bcard--swiss .wf-bcard__stack, .wf-bcard--syntax .wf-bcard__stack {
+  display: block; grid-column: 1; grid-row: 3; align-self: end;
+}
+.wf-bcard--quiet .wf-bcard__side, .wf-bcard--shell .wf-bcard__side,
+.wf-bcard--grid .wf-bcard__side, .wf-bcard--night .wf-bcard__side,
+.wf-bcard--signal .wf-bcard__side, .wf-bcard--letter .wf-bcard__side,
+.wf-bcard--swiss .wf-bcard__side, .wf-bcard--syntax .wf-bcard__side {
+  grid-column: 2; grid-row: 2; align-self: center; width: 13cqw;
+}
+/* 01 콰이엇 — 흰 종이, 위계만. 이름 위 헤어라인 하나가 전부입니다. */
+.wf-bcard--quiet { background: var(--bc-paper-0); color: var(--bc-ink-900); }
+.wf-bcard--quiet .wf-bcard__info { border-top: 1px solid var(--bc-ink-100); padding-top: 2.4cqw; }
+.wf-bcard--quiet .wf-bcard__nameen, .wf-bcard--quiet .wf-bcard__title { color: var(--bc-ink-500); }
+/* 02 셸 — 터미널. 잉크 바탕 · 네온 · 전부 모노스페이스.
+   프롬프트 기호는 가이드가 허용한 세 글리프 중 하나입니다(➜ ◀▶ ·). */
+.wf-bcard--shell { background: var(--bc-ink-900); color: var(--bc-paper-1); --bc-accent: var(--bc-neon); }
+.wf-bcard--shell .wf-bcard__in { font-family: var(--bc-mono); }
+.wf-bcard--shell .wf-bcard__name { font-family: var(--bc-mono); font-size: 5.2cqw; color: #fff; }
+.wf-bcard--shell .wf-bcard__name::before { content: '\279C\00A0'; color: var(--bc-neon); font-weight: 400; }
+.wf-bcard--shell .wf-bcard__nameen, .wf-bcard--shell .wf-bcard__title { color: var(--bc-syn-com); font-family: var(--bc-mono); }
+.wf-bcard--shell .wf-bcard__label { color: var(--bc-syn-com); }
+.wf-bcard--shell .wf-bcard__ico { background: transparent; color: var(--bc-neon); }
+.wf-bcard--shell .wf-bcard__line { color: var(--bc-paper-1); }
+/* 03 그리드 — 브루탈리즘. 3px 외곽과 눈에 보이는 칸. */
+.wf-bcard--grid {
+  background: var(--bc-paper-1); color: var(--bc-ink-900);
+  --bc-accent: var(--bc-warm);
+  border: 3px solid var(--bc-ink-900);
+}
+.wf-bcard--grid .wf-bcard__info { border-block: 1px solid var(--bc-ink-900); padding-block: 2.2cqw; }
+.wf-bcard--grid .wf-bcard__name { text-transform: uppercase; }
+.wf-bcard--grid .wf-bcard__nameen, .wf-bcard--grid .wf-bcard__title { color: var(--bc-ink-500); }
+/* 04 나이트 — 다크 모드 앱 UI. 한 겹 패널에 담긴 느낌. */
+.wf-bcard--night { background: var(--bc-ink-900); color: var(--bc-paper-1); }
+.wf-bcard--night .wf-bcard__in { background: #14161A; border-radius: 6px; }
+.wf-bcard--night .wf-bcard__name { color: #fff; }
+.wf-bcard--night .wf-bcard__nameen, .wf-bcard--night .wf-bcard__title { color: var(--bc-ink-300); }
+.wf-bcard--night .wf-bcard__line { color: var(--bc-paper-1); }
+/* 05 시그널 — 네온. 글로우는 가이드가 이 장에만 허용합니다. */
+.wf-bcard--signal { background: var(--bc-ink-900); color: var(--bc-paper-1); --bc-accent: var(--bc-neon); }
+.wf-bcard--signal .wf-bcard__mono { text-shadow: 0 0 14px rgb(0 229 160 / 0.45); }
+.wf-bcard--signal .wf-bcard__name { color: #fff; }
+.wf-bcard--signal .wf-bcard__info { border-left: 2px solid var(--bc-neon); padding-left: 3cqw; }
+.wf-bcard--signal .wf-bcard__nameen, .wf-bcard--signal .wf-bcard__title { color: var(--bc-ink-300); }
+.wf-bcard--signal .wf-bcard__line { color: var(--bc-paper-1); }
+/* 06 레터프레스 — 따뜻한 종이에 금박, 가운데 정렬.
+   압인은 텍스트 그림자로만 흉내 냅니다(가이드가 정한 유일한 질감 표현). */
+.wf-bcard--letter { background: var(--bc-paper-2); color: var(--bc-ink-900); --bc-accent: var(--bc-gold); }
+.wf-bcard--letter .wf-bcard__in {
+  grid-template-columns: 1fr; grid-template-rows: auto 1fr auto;
+  justify-items: center; text-align: center;
+}
+.wf-bcard--letter .wf-bcard__mono { display: none; }
+.wf-bcard--letter .wf-bcard__label { grid-column: 1; color: var(--bc-accent); }
+.wf-bcard--letter .wf-bcard__info { grid-column: 1; align-items: center; }
+.wf-bcard--letter .wf-bcard__text { align-items: center; text-align: center; }
+.wf-bcard--letter .wf-bcard__row { justify-content: center; }
+.wf-bcard--letter .wf-bcard__stack { grid-column: 1; grid-row: 3; }
+.wf-bcard--letter .wf-bcard__side { grid-column: 1; grid-row: 3; justify-self: end; }
+.wf-bcard--letter .wf-bcard__name {
+  text-shadow: 0 1px 0 rgb(255 255 255 / 0.85), 0 -1px 0 rgb(11 12 14 / 0.18);
+}
+.wf-bcard--letter .wf-bcard__nameen, .wf-bcard--letter .wf-bcard__title { color: var(--bc-ink-500); }
+/* 07 스위스 — 왼쪽 색 필드에 이니셜, 오른쪽에 정보. 이름 아래 2px 규칙선. */
+.wf-bcard--swiss { background: var(--bc-paper-0); color: var(--bc-ink-900); }
+.wf-bcard--swiss .wf-bcard__in {
+  padding: 0; grid-template-columns: 31% 1fr; grid-template-rows: 1fr auto;
+}
+.wf-bcard--swiss .wf-bcard__mono {
+  grid-column: 1; grid-row: 1 / -1; justify-self: stretch; align-self: stretch;
+  background: var(--bc-accent); color: #fff;
+  display: flex; align-items: flex-start;
+  padding: 4.4cqw; font-size: 8.6cqw;
+}
+.wf-bcard--swiss .wf-bcard__label { grid-column: 2; grid-row: 1; align-self: start; padding: 4.4cqw 4.4cqw 0; color: var(--bc-accent); }
+.wf-bcard--swiss .wf-bcard__info { grid-column: 2; grid-row: 1; align-self: end; padding: 0 4.4cqw; }
+.wf-bcard--swiss .wf-bcard__stack { grid-column: 2; grid-row: 2; padding: 0 4.4cqw 3.4cqw; }
+.wf-bcard--swiss .wf-bcard__side { grid-column: 2; grid-row: 2; justify-self: end; align-self: end; margin: 0 4.4cqw 3.4cqw 0; }
+.wf-bcard--swiss .wf-bcard__name::after {
+  content: ''; display: block; width: 34px; height: 2px;
+  background: var(--bc-ink-900); margin: 1.6cqw 0 0.8cqw;
+}
+.wf-bcard--swiss .wf-bcard__nameen, .wf-bcard--swiss .wf-bcard__title { color: var(--bc-ink-500); }
+/* 08 신택스 — 코드 에디터 문법 하이라이트. 값만 색이 다릅니다. */
+.wf-bcard--syntax { background: var(--bc-ink-900); color: var(--bc-paper-1); }
+.wf-bcard--syntax .wf-bcard__in { font-family: var(--bc-mono); }
+.wf-bcard--syntax .wf-bcard__mono { color: var(--bc-syn-fn); }
+.wf-bcard--syntax .wf-bcard__label { color: var(--bc-syn-com); }
+.wf-bcard--syntax .wf-bcard__name { font-family: var(--bc-mono); font-size: 5.2cqw; color: var(--bc-syn-str); }
+.wf-bcard--syntax .wf-bcard__name::before { content: 'const '; color: var(--bc-syn-key); font-weight: 400; }
+.wf-bcard--syntax .wf-bcard__nameen, .wf-bcard--syntax .wf-bcard__title { color: var(--bc-syn-com); font-family: var(--bc-mono); }
+.wf-bcard--syntax .wf-bcard__line { color: var(--bc-syn-num); }
+.wf-bcard--syntax .wf-bcard__ico { background: transparent; color: var(--bc-syn-key); }
+.wf-bcard--syntax .wf-bcard__stack { color: var(--bc-syn-com); }
+/* 한 줄 소개는 여덟 장 모두에서 기술 스택 자리와 겹칩니다 —
+ * 둘 다 적었으면 소개를 접습니다(명함에 문장은 최대 하나라는 가이드 규칙). */
+.wf-bcard--quiet .wf-bcard__tagline, .wf-bcard--shell .wf-bcard__tagline,
+.wf-bcard--grid .wf-bcard__tagline, .wf-bcard--night .wf-bcard__tagline,
+.wf-bcard--signal .wf-bcard__tagline, .wf-bcard--letter .wf-bcard__tagline,
+.wf-bcard--swiss .wf-bcard__tagline, .wf-bcard--syntax .wf-bcard__tagline { display: none; }
+/* 아이콘 모양 — 우리가 그린 도형이라 상업적으로 써도 됩니다.
+ * 바깥 아이콘 팩을 담지 않는 것은 팩마다 표시 의무·재배포 조건이 달라
+ * 결과물을 받은 사람이 그 조건을 떠안게 되기 때문입니다. */
+.wf-bcard--ico-line .wf-bcard__ico {
+  background: transparent;
+  color: var(--bc-accent);
+  border: 0.35cqw solid var(--bc-accent);
+}
+.wf-bcard--ico-bare .wf-bcard__ico {
+  background: transparent;
+  color: var(--bc-accent);
+  width: 4.6cqw; height: 4.6cqw;
+}
+.wf-bcard--ico-bare .wf-bcard__ico svg { width: 100%; height: 100%; }
+.wf-bcard--ico-none .wf-bcard__ico { display: none; }
+/* 아이콘을 빼면 잇던 점선도 뺍니다 — 이을 것이 없습니다. */
+.wf-bcard--ico-none .wf-bcard__info::before { display: none; }
+/* QR 자리 — '자동'이면 디자인이 정한 자리를 그대로 씁니다.
+ * 나머지는 모서리에 띄우므로 세로 흐름에서 빠집니다(높이를 안 먹습니다). */
+.wf-bcard.is-qr-right .wf-bcard__side,
+.wf-bcard.is-qr-bl .wf-bcard__side,
+.wf-bcard.is-qr-br .wf-bcard__side {
+  position: absolute;
+  width: 17cqw;
+  margin: 0;
+  /*
+   * 그리드 자리를 반드시 풀어야 합니다. 자리를 정해 둔 격자 칸의 자식을
+   * absolute로 띄우면 기준(컨테이너 블록)이 **격자 칸**이 되어, left를 5cqw로
+   * 줘도 카드 왼쪽이 아니라 그 칸 왼쪽에서 잽니다(왼쪽 아래가 163px에 붙던
+   * 이유). auto로 되돌리면 기준이 카드 안쪽 상자가 됩니다.
+   */
+  grid-column: auto;
+  grid-row: auto;
+  /* 디자인이 미리 잡아 둔 좌표를 먼저 지웁니다 — 가운데 정렬의 top:50%가
+   * 남아 있으면 '아래'로 옮겨도 위에 붙은 채로 있습니다. */
+  inset: auto;
+  translate: none;
+}
+.wf-bcard.is-qr-right .wf-bcard__side { right: 5cqw; top: 50%; translate: 0 -50%; }
+.wf-bcard.is-qr-bl .wf-bcard__side { left: 5cqw; bottom: 5cqw; }
+.wf-bcard.is-qr-br .wf-bcard__side { right: 5cqw; bottom: 5cqw; }
+/* 띄운 QR과 글이 겹치지 않게 그쪽 여백을 넓힙니다. */
+.wf-bcard.is-qr-right .wf-bcard__in { padding-right: 22cqw; }
+.wf-bcard.is-qr-br .wf-bcard__in { padding-right: 24cqw; }
+.wf-bcard.is-qr-bl .wf-bcard__in { padding-left: 24cqw; }
 /* 장식 곡선 — 기본은 안 그립니다. '사이드 라인'만 켭니다. */
 .wf-bcard__deco { display: none; }
 /* 사이드 라인 — 왼쪽에 큰 분야, 오른쪽에 아이콘 줄. 참고 이미지의 배치입니다.
@@ -1136,19 +1396,33 @@ button { font: inherit; color: inherit; }
   pointer-events: none;
 }
 /* 가운데 정렬 — 이름을 앞세우는 가장 조용한 판 */
+/*
+ * 가운데 정렬은 세로로 쌓는 판이라 담을 높이가 가장 빠듯합니다.
+ * 큰 글자 + 이름 세 줄 + 연락처 세 줄 + QR을 그대로 세우면 카드 높이를
+ * 17px 넘겼습니다(1.655 비율은 못 늘리므로 넘친 만큼 잘려 나갔습니다).
+ * QR을 오른쪽에 띄워 세로 흐름에서 빼고, 글자도 한 단계 조입니다.
+ */
 .wf-bcard--center .wf-bcard__in {
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto auto;
   justify-items: center; align-content: center;
   text-align: center;
-  gap: 2cqw;
+  gap: 1.6cqw;
 }
+.wf-bcard--center .wf-bcard__info { gap: 1.4cqw; }
+.wf-bcard--center .wf-bcard__name { font-size: 4.4cqw; }
+.wf-bcard--center .wf-bcard__line { font-size: 2.4cqw; }
+.wf-bcard--center .wf-bcard__ico { width: 4.6cqw; height: 4.6cqw; }
+.wf-bcard--center .wf-bcard__side {
+  position: absolute; right: 5cqw; top: 50%; translate: 0 -50%;
+  width: 16cqw;
+}
+/* QR이 있을 때만 그만큼 오른쪽을 비웁니다 — 없으면 가운데 그대로입니다. */
+.wf-bcard--center .wf-bcard__in:has(.wf-bcard__side) { padding-right: 26cqw; }
 .wf-bcard--center .wf-bcard__lead { align-items: center; }
 .wf-bcard--center .wf-bcard__role { font-size: 7cqw; }
 .wf-bcard--center .wf-bcard__rolesub { font-size: 3.4cqw; color: var(--wf-muted); }
 .wf-bcard--center .wf-bcard__info { align-items: center; }
 .wf-bcard--center .wf-bcard__text { align-items: center; text-align: center; }
-.wf-bcard--center .wf-bcard__side { flex-direction: row; }
-.wf-bcard--center .wf-bcard__qr { width: 17cqw; }
 /* 좌우 분할 — 왼쪽 색 띠에 분야, 오른쪽에 연락처 */
 .wf-bcard--split .wf-bcard__in {
   grid-template-columns: 34% 1fr auto;
