@@ -164,6 +164,15 @@ button { font: inherit; color: inherit; }
    :first-child가 아니라 '추가 행이 아닌 격자'로 가립니다. */
 .wf-page > .wf:not(.wf--row) { flex: 1; }
 .wf--row { position: relative; }
+/* '행을 콘텐츠 폭에 맞춤' — 와이드 화면에서 전폭 행(본문만 가운데 열)과
+ * 다열 행(카드가 화면 끝까지)이 섞여 열이 어긋나 보이는 것을 막습니다.
+ * 켠 문서만 적용 — 풀블리드 밴드를 쓰는 기존 문서는 그대로입니다. */
+.wf-page.is-rowmax > .wf {
+  width: 100%;
+  max-width: var(--wf-max);
+  margin-left: auto;
+  margin-right: auto;
+}
 /* ── 영역 ──────────────────────────────────────────────────── */
 
 .wf__region {
