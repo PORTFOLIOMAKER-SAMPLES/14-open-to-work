@@ -346,6 +346,29 @@ button { font: inherit; color: inherit; }
 }
 .wf-card__title { font-size: 1.0em; font-weight: 700; line-height: 1.35; }
 .wf-card__stack { font-size: 0.8em; color: var(--wf-accent); }
+/* 기술 스택을 리드미 배지로 — 배지 모양·색 규칙은 Section의 badges와 공용입니다.
+ * 카드는 좁으니 한 단계 작게 두고, 넘치면 다음 줄로 접힙니다. */
+.wf-card__stack--badges {
+  display: flex; flex-wrap: wrap; gap: 5px;
+  margin: 1px 0 2px;
+}
+.wf-card__stack--badges .wf-tag--badge { font-size: 0.7em; padding: 4px 9px; }
+/* 진행 상태 칩 — 썸네일 왼쪽 아래에 얹습니다(참고한 포트폴리오들의 공통 자리).
+ * 썸네일을 끄면 글 위에 인라인으로 서도록 아래에서 되돌립니다. */
+.wf-card__status {
+  position: absolute; left: 10px; bottom: 10px; z-index: 2;
+  padding: 4px 10px;
+  border-radius: 5px;
+  background: var(--st-bg, #6b7280);
+  color: var(--st-fg, #fff);
+  font-size: 0.7em; font-weight: 700; letter-spacing: 0.01em;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.18);
+}
+.wf-card__body > .wf-card__status {
+  position: static;
+  align-self: flex-start;
+  box-shadow: none;
+}
 .wf-card__desc { font-size: 0.8333em; line-height: 1.65; color: var(--wf-muted); }
 .wf-card__link { margin-top: 2px; font-size: 0.7667em; color: var(--wf-accent); }
 /* 태그 목록 (스킬 등) */
