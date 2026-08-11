@@ -11,6 +11,7 @@
 import { mount as smoothScroll } from '../effects/smooth-scroll/index.js';
 import { mount as reveal } from '../effects/scroll-reveal/index.js';
 import { mount as preview } from '../effects/hover-preview/index.js';
+import { mount as tilt } from '../effects/tilt-card/index.js';
 
 /**
  * 영역 안쪽 요소에 붙는 효과(tilt/flip/magnetic/scramble)는 옵션을 부모에서 읽습니다.
@@ -62,6 +63,10 @@ function boot() {
   try { if (localStorage.getItem(MODE_KEY) === '1') applyMode(true); } catch { /* 저장 불가 환경 */ }
   reveal('[data-fx~="reveal"]');
   preview('[data-fx~="preview"]');
+  document.querySelectorAll('[data-fx~="tilt"]').forEach((el) => {
+    const targets = el.querySelectorAll('.wf-card, .wf-main__slot');
+    if (targets.length) tilt([...targets], readOpts(el, 'tilt-card'));
+  });
 }
 
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
