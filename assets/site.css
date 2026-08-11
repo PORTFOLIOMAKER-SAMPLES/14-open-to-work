@@ -1259,6 +1259,8 @@ button { font: inherit; color: inherit; }
    압인은 텍스트 그림자로만 흉내 냅니다(가이드가 정한 유일한 질감 표현). */
 .wf-bcard--letter { background: var(--bc-paper-2); color: var(--bc-ink-900); --bc-accent: var(--bc-gold); }
 .wf-bcard--letter .wf-bcard__in {
+  /* 가운데 정렬 판이라 QR까지 한 줄에 세우면 무게중심이 오른쪽으로 쏠립니다.
+   * 세로로 라벨 / 이름·연락처 / 기술·QR 세 줄을 쌓고 전부 가운데로 모읍니다. */
   grid-template-columns: 1fr; grid-template-rows: auto 1fr auto;
   justify-items: center; text-align: center;
 }
@@ -1267,8 +1269,9 @@ button { font: inherit; color: inherit; }
 .wf-bcard--letter .wf-bcard__info { grid-column: 1; align-items: center; }
 .wf-bcard--letter .wf-bcard__text { align-items: center; text-align: center; }
 .wf-bcard--letter .wf-bcard__row { justify-content: center; }
-.wf-bcard--letter .wf-bcard__stack { grid-column: 1; grid-row: 3; }
-.wf-bcard--letter .wf-bcard__side { grid-column: 1; grid-row: 3; justify-self: end; }
+.wf-bcard--letter .wf-bcard__info { grid-row: 2; align-self: center; }
+.wf-bcard--letter .wf-bcard__stack { grid-column: 1; grid-row: 3; justify-self: center; align-self: end; }
+.wf-bcard--letter .wf-bcard__side { grid-column: 1; grid-row: 2; justify-self: end; align-self: center; }
 .wf-bcard--letter .wf-bcard__name {
   text-shadow: 0 1px 0 rgb(255 255 255 / 0.85), 0 -1px 0 rgb(11 12 14 / 0.18);
 }
@@ -1276,7 +1279,12 @@ button { font: inherit; color: inherit; }
 /* 07 스위스 — 왼쪽 색 필드에 이니셜, 오른쪽에 정보. 이름 아래 2px 규칙선. */
 .wf-bcard--swiss { background: var(--bc-paper-0); color: var(--bc-ink-900); }
 .wf-bcard--swiss .wf-bcard__in {
-  padding: 0; grid-template-columns: 31% 1fr; grid-template-rows: 1fr auto;
+  /*
+   * 오른쪽은 세 줄입니다 — 라벨 / 이름·연락처 / 기술·QR.
+   * 예전에는 라벨과 이름을 같은 칸에 넣고 하나는 위, 하나는 아래로 붙였는데,
+   * 이름 칸이 길어지면 둘이 10px 겹쳤습니다(칸이 하나면 결국 같은 자리입니다).
+   */
+  padding: 0; grid-template-columns: 31% 1fr; grid-template-rows: auto 1fr auto;
 }
 .wf-bcard--swiss .wf-bcard__mono {
   grid-column: 1; grid-row: 1 / -1; justify-self: stretch; align-self: stretch;
@@ -1285,9 +1293,9 @@ button { font: inherit; color: inherit; }
   padding: 4.4cqw; font-size: 8.6cqw;
 }
 .wf-bcard--swiss .wf-bcard__label { grid-column: 2; grid-row: 1; align-self: start; padding: 4.4cqw 4.4cqw 0; color: var(--bc-accent); }
-.wf-bcard--swiss .wf-bcard__info { grid-column: 2; grid-row: 1; align-self: end; padding: 0 4.4cqw; }
-.wf-bcard--swiss .wf-bcard__stack { grid-column: 2; grid-row: 2; padding: 0 4.4cqw 3.4cqw; }
-.wf-bcard--swiss .wf-bcard__side { grid-column: 2; grid-row: 2; justify-self: end; align-self: end; margin: 0 4.4cqw 3.4cqw 0; }
+.wf-bcard--swiss .wf-bcard__info { grid-column: 2; grid-row: 2; align-self: center; padding: 0 4.4cqw; }
+.wf-bcard--swiss .wf-bcard__stack { grid-column: 2; grid-row: 3; align-self: end; padding: 0 4.4cqw 3.4cqw; }
+.wf-bcard--swiss .wf-bcard__side { grid-column: 2; grid-row: 2; justify-self: end; align-self: center; margin-right: 4.4cqw; }
 .wf-bcard--swiss .wf-bcard__name::after {
   content: ''; display: block; width: 34px; height: 2px;
   background: var(--bc-ink-900); margin: 1.6cqw 0 0.8cqw;
@@ -1468,6 +1476,76 @@ button { font: inherit; color: inherit; }
 @container (max-width: 300px) {
   .wf-bcard__side { display: none; }
   .wf-bcard--split .wf-bcard__in { grid-template-columns: 32% 1fr; }
+}
+/* ── 앞·뒤 명함 ────────────────────────────────────────────────
+ * 누르면 Y축으로 돌아 뒷면이 나옵니다. 상태를 담는 것은 체크박스 하나이고
+ * 자바스크립트는 없습니다 — 결과물에 스크립트를 넣지 않는다는 규칙 때문인데,
+ * 덤으로 키보드(Tab → Space)로도 넘어갑니다. 체크박스는 원래 포커스를 받습니다.
+ */
+.wf-bcard.is-2face {
+  perspective: 1400px;
+  /* 3D로 도는 면이 잘리지 않게 껍데기의 자르기를 풉니다(면마다 따로 자릅니다). */
+  overflow: visible;
+  background: none;
+  border-color: transparent;
+}
+.wf-bcard__toggle {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  margin: 0; opacity: 0; z-index: 2;
+  cursor: pointer;
+  appearance: none; -webkit-appearance: none;
+}
+.wf-bcard__flip {
+  position: absolute; inset: 0;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.wf-bcard__toggle:checked ~ .wf-bcard__flip { transform: rotateY(180deg); }
+/* 포커스가 갔을 때 어디에 있는지 보이게 — 키보드로 넘기는 사람을 위한 표시입니다. */
+.wf-bcard__toggle:focus-visible ~ .wf-bcard__flip { outline: 2px solid var(--bc-accent); outline-offset: 3px; }
+.wf-bcard__face {
+  position: absolute; inset: 0;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  border-radius: inherit;
+  overflow: hidden;
+  /* 껍데기가 배경을 비웠으므로 색은 면이 가집니다 — 디자인 클래스의 값을 그대로 받습니다. */
+  background: inherit;
+}
+.wf-bcard.is-2face .wf-bcard__face { background: var(--bc-face-bg, var(--wf-surface)); }
+.wf-bcard__face--back { transform: rotateY(180deg); }
+/* 뒷면은 한 줄 소개가 맨 위에 섭니다(앞면의 라벨 자리). */
+.wf-bcard__face--back .wf-bcard__tagline {
+  display: block;
+  grid-column: 1 / -1; grid-row: 1;
+  align-self: start;
+}
+.wf-bcard__in--back .wf-bcard__info { grid-row: 2; }
+.wf-bcard__flipbtn {
+  position: absolute; right: 3cqw; bottom: 2.6cqw; z-index: 3;
+  padding: 1.2cqw 2.4cqw;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bc-accent) 92%, transparent);
+  color: #fff;
+  font-size: 2.2cqw; font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+}
+.wf-bcard__flipbtn:hover { background: var(--bc-accent); }
+/* 각 디자인의 바탕색을 면이 쓸 수 있게 변수로 한 번 더 적어 둡니다.
+ * (배경 속성은 상속되지 않아 `background: inherit`만으로는 부족합니다) */
+.wf-bcard--quiet { --bc-face-bg: var(--bc-paper-0); }
+.wf-bcard--shell,
+.wf-bcard--night,
+.wf-bcard--signal,
+.wf-bcard--syntax { --bc-face-bg: var(--bc-ink-900); }
+.wf-bcard--grid { --bc-face-bg: var(--bc-paper-1); }
+.wf-bcard--letter { --bc-face-bg: var(--bc-paper-2); }
+.wf-bcard--swiss { --bc-face-bg: var(--bc-paper-0); }
+.wf-bcard--dark { --bc-face-bg: #111114; }
+/* 움직임을 불편해하는 사람에게는 회전을 빼고 바로 바뀌게 합니다. */
+@media (prefers-reduced-motion: reduce) {
+  .wf-bcard__flip { transition: none; }
 }
 /* 버튼에 파일이 걸렸을 때의 꼬리표 */
 .wf-btn__file { font-style: normal; font-size: 0.8em; opacity: 0.72; margin-left: 7px; }
