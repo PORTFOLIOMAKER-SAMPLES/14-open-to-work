@@ -1,6 +1,6 @@
-# 서하늘 — 신입 풀스택 개발자
+# 노승재 | 과학 강사
 
-Portfolio Maker로 만든 정적 사이트입니다. **빌드 도구가 필요 없습니다.**
+포메(Portfolio Maker)로 만든 정적 사이트입니다. **빌드 도구가 필요 없습니다.**
 
 ## 열기
 
@@ -15,7 +15,10 @@ python -m http.server 5500
 
 ## 페이지
 
-- `index.html` — Home
+- `index.html` — 홈
+- `강의.html` — 강의
+- `후기.html` — 후기
+- `강의-의뢰.html` — 강의 의뢰
 
 ## 구조
 
@@ -23,7 +26,7 @@ python -m http.server 5500
 index.html 등        페이지마다 한 장
 assets/site.css      레이아웃 · 테마 · 파트 스타일
 assets/init.js       3D 효과 마운트
-effects/             효과 팩 (_core · scroll-reveal · hover-preview · tilt-card · smooth-scroll)
+effects/             효과 팩 (_core · model-showcase)
 ```
 
 ## 고치는 법
